@@ -191,18 +191,21 @@ Extract and output ONLY a valid JSON object matching this schema (no markdown, n
     const genAI = new GoogleGenerativeAI(apiKey);
     const candidateModels = ['gemini-3.8-flash', 'gemini-2.5-flash', 'gemini-flash-latest'];
     let result = null;
-    let successfulModel = '';
+    const timeoutPromise = (ms) => new Promise((_, reject) => setTimeout(() => reject(new Error('Google Gemini API call timed out.')), ms));
 
     for (const modelName of candidateModels) {
       try {
         const model = genAI.getGenerativeModel({ model: modelName });
-        result = await model.generateContent([systemPrompt, ...contents]);
+        result = await Promise.race([
+          model.generateContent([systemPrompt, ...contents]),
+          timeoutPromise(4000)
+        ]);
         if (result && result.response) {
           successfulModel = modelName;
           break;
         }
       } catch (mErr) {
-        if (mErr.message?.includes('403') || mErr.message?.includes('API_KEY_INVALID')) {
+        if (mErr.message?.includes('403') || mErr.message?.includes('API_KEY_INVALID') || mErr.message?.includes('timed out')) {
           throw mErr;
         }
       }

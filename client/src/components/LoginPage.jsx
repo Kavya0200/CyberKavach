@@ -223,6 +223,61 @@ export default function LoginPage({ onLoginSuccess, onNavigateHome }) {
             </>
           )}
         </div>
+
+        {/* Academic Evaluator Credentials Box */}
+        <div
+          style={{
+            marginTop: 24,
+            padding: '14px 16px',
+            background: 'var(--bg-app)',
+            borderRadius: 'var(--radius-md)',
+            border: '1px dashed var(--border-medium)',
+            fontSize: '0.78rem'
+          }}
+        >
+          <div style={{ fontWeight: 800, color: 'var(--primary)', marginBottom: 6, display: 'flex', alignItems: 'center', gap: 6 }}>
+            <span>🎓 Academic Evaluator / Demo Credentials</span>
+          </div>
+          <p style={{ color: 'var(--text-muted)', marginBottom: 8, fontSize: '0.75rem' }}>
+            Pre-configured accounts stored in MongoDB Atlas for quick project evaluation:
+          </p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#FFFFFF', padding: '6px 10px', borderRadius: 4, border: '1px solid var(--border-light)' }}>
+              <div>
+                <strong>Citizen Account:</strong> <code style={{ color: 'var(--primary)' }}>evaluator@cyberkavach.gov.in</code> (Pass: <code>evaluator123</code>)
+              </div>
+              <button
+                type="button"
+                style={{ fontSize: '0.72rem', padding: '3px 8px', background: 'var(--primary)', color: '#fff', border: 'none', borderRadius: 4, cursor: 'pointer' }}
+                onClick={() => {
+                  setIsLogin(true);
+                  setEmail('evaluator@cyberkavach.gov.in');
+                  setPassword('evaluator123');
+                  setError('');
+                }}
+              >
+                Auto-Fill
+              </button>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#FFFFFF', padding: '6px 10px', borderRadius: 4, border: '1px solid var(--border-light)' }}>
+              <div>
+                <strong>Police Officer Desk:</strong> <code style={{ color: 'var(--primary)' }}>officer@cyberkavach.gov.in</code> (Pass: <code>police123</code>)
+              </div>
+              <button
+                type="button"
+                style={{ fontSize: '0.72rem', padding: '3px 8px', background: '#1E3A5F', color: '#fff', border: 'none', borderRadius: 4, cursor: 'pointer' }}
+                onClick={() => {
+                  setIsLogin(true);
+                  setEmail('officer@cyberkavach.gov.in');
+                  setPassword('police123');
+                  setError('');
+                }}
+              >
+                Auto-Fill
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -8,6 +8,19 @@
 
 ## 1. Project Overview & Problem Statement
 
+### 🔑 Evaluator & Testing Credentials
+
+For evaluators and reviewers testing the application, the following pre-configured accounts are active in **MongoDB Atlas**:
+
+| Role | Portal / Desk | Email (Login ID) | Password | Testing Scope & Capabilities |
+| :--- | :--- | :--- | :--- | :--- |
+| **Citizen (Complainant)** | Citizen Portal (`/` & `/login`) | `evaluator@cyberkavach.gov.in` | `evaluator123` | File genuine cybercrime reports, trigger AI Golden-Hour triage, view extracted UTR/insights, copy 1930 script, print formal FIR. |
+| **Cyber Cell Police Officer** | Officer Console (`/officer`) | `officer@cyberkavach.gov.in` | `police123` | View live NCRP incident queue, inspect citizen dossiers, issue bank freeze notices, and mark suspect funds frozen. |
+
+> 💡 *Quick Evaluation Tip: Both accounts can also be auto-filled with 1 click using the "Academic Evaluator Credentials" buttons on the Sign In page.*
+
+---
+
 ### Problem Statement
 In India and worldwide, over **₹66,000 Crore** is lost annually to cyber financial fraud (UPI phishing, malicious electricity APKs, fake Telegram tasks, QR code scams, and loan app extortion). When citizens get scammed:
 1. **The "UTR Scramble"**: When calling the National Cybercrime Helpline (**1930**), operators urgently demand the 12-digit **UTR / Transaction Reference Number** and beneficiary VPA to freeze the scammer's mule account before cash is withdrawn at an ATM during the critical 2-hour **"Golden Hour"**. In sheer panic, victims do not know what a UTR is or where to find it.

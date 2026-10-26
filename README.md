@@ -2,7 +2,10 @@
 ### *AI-First Citizen Cybercrime Triage & Golden-Hour Fraud Response System*
 
 > **🏆 End-Term Software Project Submission**  
-> Built with React (Vite), Node.js/Express, Google Gemini API, and MongoDB (with zero-crash local resilient fallback).
+> 🌐 **Live Deployed Application**: **[Open CyberKavach Portal](https://cyberkavach.onrender.com)** *(Render Full-Stack Deployment)*  
+> 💻 **GitHub Repository**: [https://github.com/Kavya0200/CyberKavach](https://github.com/Kavya0200/CyberKavach)  
+> 🗄️ **Database**: MongoDB Atlas (Connected & Live)  
+> 🤖 **AI Engine**: Google Gemini API + High-Precision Forensic Parser  
 
 ---
 

@@ -27,26 +27,40 @@ app.use('/api/triage', require('./routes/triageRoutes'));
 app.use('/api/reports', require('./routes/reportRoutes'));
 app.use('/api/stats', require('./routes/statsRoutes'));
 
-// Root welcome endpoint
-app.get('/', (req, res) => {
-  res.json({
-    status: 'ONLINE',
-    service: 'CyberKavach AI Citizen Cybercrime Triage API',
-    version: '1.0.0',
-    documentation: 'https://github.com/Kavya0200/CyberKavach#readme',
-    endpoints: {
-      health: '/api/health',
-      stats: '/api/stats',
-      reports: '/api/reports',
-      triage: '/api/triage',
-      auth: '/api/auth'
-    },
-    evaluatorCredentials: {
-      citizen: 'evaluator@cyberkavach.gov.in (password: evaluator123)',
-      officer: 'officer@cyberkavach.gov.in (password: police123)'
-    }
+// Serve React frontend when built (Unified Deployment)
+const fs = require('fs');
+const clientDistPath = path.join(__dirname, '../../client/dist');
+
+if (fs.existsSync(clientDistPath)) {
+  app.use(express.static(clientDistPath));
+
+  // Catch-all route to serve React index.html for SPA routes (/login, /officer, /stats)
+  app.get('*', (req, res, next) => {
+    if (req.url.startsWith('/api')) return next();
+    res.sendFile(path.join(clientDistPath, 'index.html'));
   });
-});
+} else {
+  // Root welcome endpoint if frontend dist not yet built
+  app.get('/', (req, res) => {
+    res.json({
+      status: 'ONLINE',
+      service: 'CyberKavach AI Citizen Cybercrime Triage API',
+      version: '1.0.0',
+      documentation: 'https://github.com/Kavya0200/CyberKavach#readme',
+      endpoints: {
+        health: '/api/health',
+        stats: '/api/stats',
+        reports: '/api/reports',
+        triage: '/api/triage',
+        auth: '/api/auth'
+      },
+      evaluatorCredentials: {
+        citizen: 'evaluator@cyberkavach.gov.in (password: evaluator123)',
+        officer: 'officer@cyberkavach.gov.in (password: police123)'
+      }
+    });
+  });
+}
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {

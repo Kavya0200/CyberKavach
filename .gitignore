@@ -17,7 +17,6 @@ yarn-error.log*
 logs/
 
 # Build Output
-dist/
 build/
 
 # OS and Editor

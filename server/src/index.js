@@ -27,6 +27,27 @@ app.use('/api/triage', require('./routes/triageRoutes'));
 app.use('/api/reports', require('./routes/reportRoutes'));
 app.use('/api/stats', require('./routes/statsRoutes'));
 
+// Root welcome endpoint
+app.get('/', (req, res) => {
+  res.json({
+    status: 'ONLINE',
+    service: 'CyberKavach AI Citizen Cybercrime Triage API',
+    version: '1.0.0',
+    documentation: 'https://github.com/Kavya0200/CyberKavach#readme',
+    endpoints: {
+      health: '/api/health',
+      stats: '/api/stats',
+      reports: '/api/reports',
+      triage: '/api/triage',
+      auth: '/api/auth'
+    },
+    evaluatorCredentials: {
+      citizen: 'evaluator@cyberkavach.gov.in (password: evaluator123)',
+      officer: 'officer@cyberkavach.gov.in (password: police123)'
+    }
+  });
+});
+
 // Health check endpoint
 app.get('/api/health', (req, res) => {
   res.json({

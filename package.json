@@ -4,6 +4,8 @@
   "description": "CyberKavach - Citizen Cybercrime Triage & Golden-Hour Fraud Response Portal",
   "private": true,
   "scripts": {
+    "start": "node server/src/index.js",
+    "build": "cd server && npm install",
     "install:all": "npm install && cd server && npm install && cd ../client && npm install",
     "server": "cd server && npm run dev",
     "client": "cd client && npm run dev",

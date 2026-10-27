@@ -29,9 +29,17 @@ app.use('/api/stats', require('./routes/statsRoutes'));
 
 // Serve React frontend when built (Unified Deployment)
 const fs = require('fs');
-const clientDistPath = path.join(__dirname, '../../client/dist');
+const possiblePaths = [
+  path.join(__dirname, '../public'),
+  path.join(__dirname, '../../client/dist'),
+  path.join(process.cwd(), 'client/dist'),
+  path.join(process.cwd(), 'server/public'),
+  path.join(process.cwd(), 'public')
+];
+const clientDistPath = possiblePaths.find(p => fs.existsSync(p) && fs.existsSync(path.join(p, 'index.html')));
 
-if (fs.existsSync(clientDistPath)) {
+if (clientDistPath) {
+  console.log(`[Static] Serving frontend from: ${clientDistPath}`);
   app.use(express.static(clientDistPath));
 
   // Catch-all route to serve React index.html for SPA routes (/login, /officer, /stats)

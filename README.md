@@ -221,3 +221,10 @@ Open your browser at **http://localhost:5173/**.
 * **No Plaintext Secrets**: API keys and database credentials are strictly stored in `.env` files (excluded via `.gitignore`).
 * **Cryptographic Evidence Chain**: Uploaded screenshots are hashed using `SHA-256` to prove integrity under Section 63 / 65B of the Indian Evidence Act.
 * **Resilient Graceful Degradation**: If MongoDB or the external Gemini API is unreachable, the system automatically falls back to local storage and heuristic parsing without throwing unhandled exceptions.
+
+
+---
+
+## 🎥 Project Demo Video
+
+[Watch CyberKavach Demo Video](https://drive.google.com/file/d/142ssHJHMl-MWjlfR8fFngXeRgkEeSV_q/view?usp=sharing)
